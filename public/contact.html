@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zuri Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+    /* Default light theme */
+    
+     :root {
+        color-scheme: light dark;
+        --primary-color: #eeeeee;
+        --secondary-color: #1e1e1e;
+        --tertiary-color: #f2f2f2;
+        --accent-color: #f40968;
+        --header-font: "Merriweather", serif;
+        --text-font: "Open Sans", sans-serif;
+        --space-bff: 8px;
+        --space-close-friend: 16px;
+        --space-closer-friend: 24px;
+        --space-friend: 32px;
+        --space-acquaintance: 64px;
+        --space-distant: 72px;
+        --space-stranger: 128px;
+    }
+    /* Dark theme */
+    
+    [theme="dark"] {
+        --primary-color: #1e1e1e;
+        --secondary-color: #f2f2f2;
+        --tertiary-color: #eeeeee;
+        --accent-color: #f40968;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+         :root {
+            --primary-color: #1e1e1e;
+            --secondary-color: #f2f2f2;
+            --tertiary-color: #eeeeee;
+            --accent-color: #f40968;
+        }
+    }
+    
+    * {
+        box-sizing: border-box;
+        margin: 0;
+    }
+    
+    body {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        font-family: var(--text-font);
+        transition: 0.3s ease-in-out;
+    }
+    /* Main Content */
+    
+    main {
+        padding-top: var(--space-stranger);
+    }
+    
+    .hero-title h1 {
+        font-size: 70px;
+    }
+    
+    .hero-title h2 {
+        font-size: 40px;
+        font-weight: 500;
+        line-height: 50px;
+        margin: 0 0 20px 0;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--secondary-color);
+    }
+    
+    .hero-title h2::after {
+        content: "";
+        width: 120px;
+        height: 3px;
+        display: inline-block;
+        background: var(--accent-color);
+        margin: 15px 10px;
+    }
+    
+    .section-title h2 {
+        font-size: 30px;
+        font-weight: 500;
+        line-height: 1px;
+        margin: 0 0 20px 0;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--secondary-color);
+    }
+    
+    .section-title h2::after {
+        content: "";
+        width: 120px;
+        height: 3px;
+        display: inline-block;
+        background: var(--accent-color);
+        margin: 15px 10px;
+    }
+    
+    .hero-content p {
+        font-family: var(--header-font);
+        font-size: 30px;
+    }
+    
+    .highlight-text {
+        background-color: var(--accent-color);
+        color: var(--tertiary-color);
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+    
+    .social {
+        font-size: 30px;
+        line-height: 0;
+    }
+    
+    a {
+        color: var(--secondary-color);
+        text-decoration-color: var(--accent-color);
+        transition: all 200ms ease-in-out;
+    }
+    
+    a:hover,
+    .logo:hover {
+        color: var(--accent-color);
+        text-decoration: none;
+    }
+    
+    ul.skills {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    
+    p,
+    li {
+        font-size: 20px;
+    }
+    
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: var(--header-font);
+    }
+    
+    .bff {
+        padding: var(--space-bff) 0;
+    }
+    
+    .close-friend {
+        padding: var(--space-close-friend) 0;
+    }
+    
+    .closer-friend {
+        padding: var(--space-closer-friend) 0;
+    }
+    
+    .friend {
+        padding: var(--space-friend) 0;
+    }
+    
+    .acquaintance {
+        padding: var(--space-acquaintance) 0;
+    }
+    
+    .distant {
+        padding: var(--space-distant) 0;
+    }
+    
+    .stranger {
+        padding: var(--space-stranger) 0;
+    }
+    /* header */
+    
+    .header {
+        position: fixed;
+        height: 50px;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 3;
+        background-color: var(--primary-color);
+        transition: 0.3s ease-in-out;
+    }
+    
+    .header ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        overflow: hidden;
+    }
+    
+    .header li a {
+        display: block;
+        padding: var(--space-close-friend) var(--space-bff);
+        text-decoration: none;
+        transition: all 200ms ease-in-out;
+    }
+    
+    .header li a:hover,
+    .header .menu-btn:hover {
+        text-decoration: underline;
+        text-decoration-color: var(--accent-color);
+        color: var(--secondary-color);
+    }
+    
+    .header .logo {
+        display: block;
+        float: left;
+        font-size: 2em;
+        text-decoration: none;
+        font-weight: 700;
+        padding: var(--space-close-friend) 0;
+    }
+    
+    .header .logo-dot {
+        font-size: 70px;
+        color: var(--accent-color);
+        line-height: 20px;
+        margin-left: -10px;
+    }
+    /* menu */
+    
+    .header .menu {
+        clear: both;
+        max-height: 0;
+        transition: max-height 0.2s ease-out;
+    }
+    /* menu icon */
+    
+    .header .menu-icon {
+        cursor: pointer;
+        display: inline-block;
+        float: right;
+        padding: var(--space-friend) var(--space-closer-friend);
+        position: relative;
+        user-select: none;
+    }
+    
+    .header .menu-icon .navicon {
+        background: var(--secondary-color);
+        display: block;
+        height: 2px;
+        position: relative;
+        transition: background 0.2s ease-out;
+        width: 18px;
+    }
+    
+    .header .menu-icon .navicon:before,
+    .header .menu-icon .navicon:after {
+        background: var(--secondary-color);
+        content: "";
+        display: block;
+        height: 100%;
+        position: absolute;
+        transition: all 0.2s ease-out;
+        width: 100%;
+    }
+    
+    .header .menu-icon .navicon:before {
+        top: 5px;
+    }
+    
+    .header .menu-icon .navicon:after {
+        top: -5px;
+    }
+    /* menu btn */
+    
+    .header .menu-btn {
+        display: none;
+    }
+    
+    .header .menu-btn:checked~.menu {
+        max-height: 350px;
+        background-color: var(--primary-color);
+    }
+    
+    .header .menu-btn:checked~.menu-icon .navicon {
+        background: transparent;
+    }
+    
+    .header .menu-btn:checked~.menu-icon .navicon:before {
+        transform: rotate(-45deg);
+    }
+    
+    .header .menu-btn:checked~.menu-icon .navicon:after {
+        transform: rotate(45deg);
+    }
+    
+    .header .menu-btn:checked~.menu-icon:not(.steps) .navicon:before,
+    .header .menu-btn:checked~.menu-icon:not(.steps) .navicon:after {
+        top: 0;
+    }
+    /* 48em = 768px */
+    
+    @media (min-width: 768px) {
+        .header li {
+            float: left;
+        }
+        .header .menu {
+            clear: none;
+            float: right;
+            max-height: none;
+        }
+        .header .menu-icon {
+            display: none;
+        }
+    }
+    /* Slider styling */
+    
+    .theme-switch-container {
+        display: flex;
+        padding: var(--space-close-friend) var(--space-bff);
+    }
+    
+    .theme-slider {
+        display: inline-block;
+        height: 30px;
+        position: relative;
+        width: 56px;
+    }
+    
+    .theme-slider input {
+        display: none;
+    }
+    
+    .slider {
+        background-color: #ccc;
+        bottom: 0;
+        cursor: pointer;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: 0.4s;
+    }
+    
+    .slider:before {
+        background-color: #fff;
+        bottom: 4px;
+        content: "";
+        height: 23px;
+        left: 4px;
+        position: absolute;
+        transition: 0.4s;
+        width: 23px;
+    }
+    
+    input:checked+.slider {
+        background-color: var(--accent-color);
+    }
+    
+    input:checked+.slider:before {
+        transform: translateX(23px);
+    }
+    
+    .slider.round {
+        border-radius: 34px;
+    }
+    
+    .slider.round:before {
+        border-radius: 50%;
+    }
+    
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+<body>
+
+    <body class="d-flex flex-column min-vh-100">
+        <header>
+            <div class="header">
+                <div class="container">
+
+                    <input class="menu-btn" type="checkbox" id="menu-btn" />
+                    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+                    <ul class="menu">
+                        <li><a href="/home">home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                        <li>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="container">
+                <div class="hero-title">
+                    <h2>Hi</h2>
+                    <h1>I am Jimi Abraham and you are Welcome To My Simple Portfolio Page</h1>
+                </div>
+                <div class="hero-content">
+                    <p class="acquaintance">
+
+                        Started programming 2018, started out on HTML CSS, did a little bit of javascript then entered PHP, na so i no gree commot PHP becuase i was building some small small projects and e dey gimme joy! . <br><br> Never quickly understood
+                        there was more to programming, later i found that there was something called OOP, omoo! na so i start to dey learn that one too...later jumped on laravel and worked more efficiently with the framework <br><br> And now!, I have
+                        to land on NodeJS for backend, i didn't get gigs or jobs with PHP, now that i am on Node, i am really hoping that something will break out!
+
+
+                    </p>
+
+
+
+                </div>
+            </div>
+        </main>
+
+
+
+
+    </body>
+
+</body>
+
+</html>
